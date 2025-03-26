@@ -1,21 +1,12 @@
 # Development
 
 - Ubuntu 24.10 (oracular)
-- Fish Shell
-- Rust Toolchain
-- GhosTTY terminal emulator
-- Zellij terminal workspace
-- Helix terminal editor
+- [Rust Toolchain](https://rustup.rs/)
+- [Fish Shell](https://fishshell.com/)
+- [Helix Editor](https://helix-editor.com/)
+- [Zellij Workspace](https://zellij.dev/)
+- [GhosTTY Terminal](https://ghostty.org/)
 
-<https://fishshell.com/>
-
-<https://ghostty.org/>
-
-<https://zellij.dev/>
-
-<https://helix-editor.com/>
-
-<https://rustup.rs/>
 
 ```sh
 #
@@ -44,22 +35,6 @@ fish_add_path $HOME/.local/bin/
 
 
 #
-# GhosTTY
-#
-
-# https://ghostty.org/docs/install/binary#snap
-# https://snapcraft.io/ghostty
-
-sudo snap install ghostty --classic
-
-# SSH
-# https://ghostty.org/docs/help/terminfo#copy-ghostty's-terminfo-to-a-remote-machine
-# 192.168.72.123 <- Raspberry Pi OS Lite (Debian 12 bookworm)
-
-infocmp -x | ssh 192.168.72.123 -- tic -x -
-
-
-#
 # Rust Toolchain
 #
 
@@ -85,7 +60,62 @@ cargo install-update --all
 
 
 #
-# Zellij
+# Helix Editor
+#
+
+# https://docs.helix-editor.com/package-managers.html#snap
+# https://snapcraft.io/helix
+
+snap install --classic helix
+
+hx --help
+
+# helix-term 25.01.1 (e7ac2fcd)
+# Blaž Hrastnik <blaz@mxxn.io>
+# A post-modern text editor.
+# 
+# USAGE:
+#     hx [FLAGS] [files]...
+# 
+# ARGS:
+#     <files>...    Sets the input file to use, position can also be specified via file[:row[:col]]
+# 
+# FLAGS:
+#     -h, --help                     Prints help information
+#     --tutor                        Loads the tutorial
+#     --health [CATEGORY]            Checks for potential errors in editor setup
+#                                    CATEGORY can be a language or one of 'clipboard', 'languages'
+#                                    or 'all'. 'all' is the default if not specified.
+#     -g, --grammar {fetch|build}    Fetches or builds tree-sitter grammars listed in languages.toml
+#     -c, --config <file>            Specifies a file to use for configuration
+#     -v                             Increases logging verbosity each use for up to 3 times
+#     --log <file>                   Specifies a file to use for logging
+#                                    (default file: /home/cavani/.cache/helix/helix.log)
+#     -V, --version                  Prints version information
+#     --vsplit                       Splits all given files vertically into different windows
+#     --hsplit                       Splits all given files horizontally into different windows
+#     -w, --working-dir <path>       Specify an initial working directory
+#     +N                             Open the first given file at line number N
+
+
+sudo apt install -y lldb-19
+sudo update-alternatives --install /usr/bin/lldb-dap lldb-dap /usr/bin/lldb-dap-19 1000
+
+hx --health rust
+
+# Configured language servers:
+#   ✓ rust-analyzer: /home/cavani/.cargo/bin/rust-analyzer
+# Configured debug adapter: lldb-dap
+# Binary for debug adapter: /usr/bin/lldb-dap
+# Configured formatter: None
+# Tree-sitter parser: ✓
+# Highlight queries: ✓
+# Textobject queries: ✓
+# Indent queries: ✓
+
+
+#
+# Zellij Workspace
 #
 
 # https://zellij.dev/documentation/installation#rust---cargo
@@ -162,56 +192,17 @@ zellij attach $(basename $PWD)
 
 
 #
-# Helix Editor
+# GhosTTY
 #
 
-# https://docs.helix-editor.com/package-managers.html#snap
-# https://snapcraft.io/helix
+# https://ghostty.org/docs/install/binary#snap
+# https://snapcraft.io/ghostty
 
-snap install --classic helix
+sudo snap install ghostty --classic
 
-hx --help
+# SSH
+# https://ghostty.org/docs/help/terminfo#copy-ghostty's-terminfo-to-a-remote-machine
+# 192.168.72.123 <- Raspberry Pi OS Lite (Debian 12 bookworm)
 
-# helix-term 25.01.1 (e7ac2fcd)
-# Blaž Hrastnik <blaz@mxxn.io>
-# A post-modern text editor.
-# 
-# USAGE:
-#     hx [FLAGS] [files]...
-# 
-# ARGS:
-#     <files>...    Sets the input file to use, position can also be specified via file[:row[:col]]
-# 
-# FLAGS:
-#     -h, --help                     Prints help information
-#     --tutor                        Loads the tutorial
-#     --health [CATEGORY]            Checks for potential errors in editor setup
-#                                    CATEGORY can be a language or one of 'clipboard', 'languages'
-#                                    or 'all'. 'all' is the default if not specified.
-#     -g, --grammar {fetch|build}    Fetches or builds tree-sitter grammars listed in languages.toml
-#     -c, --config <file>            Specifies a file to use for configuration
-#     -v                             Increases logging verbosity each use for up to 3 times
-#     --log <file>                   Specifies a file to use for logging
-#                                    (default file: /home/cavani/.cache/helix/helix.log)
-#     -V, --version                  Prints version information
-#     --vsplit                       Splits all given files vertically into different windows
-#     --hsplit                       Splits all given files horizontally into different windows
-#     -w, --working-dir <path>       Specify an initial working directory
-#     +N                             Open the first given file at line number N
-
-
-sudo apt install -y lldb-19
-sudo update-alternatives --install /usr/bin/lldb-dap lldb-dap /usr/bin/lldb-dap-19 1000
-
-hx --health rust
-
-# Configured language servers:
-#   ✓ rust-analyzer: /home/cavani/.cargo/bin/rust-analyzer
-# Configured debug adapter: lldb-dap
-# Binary for debug adapter: /usr/bin/lldb-dap
-# Configured formatter: None
-# Tree-sitter parser: ✓
-# Highlight queries: ✓
-# Textobject queries: ✓
-# Indent queries: ✓
+infocmp -x | ssh 192.168.72.123 -- tic -x -
 ```
