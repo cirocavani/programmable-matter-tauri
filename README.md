@@ -1094,4 +1094,103 @@ cargo tauri android dev
 # 03-26 11:00:28.676 16743 16750 I main.machine.v: SIGUSR1 forcing GC (no HPROF) and profile save
 # 03-26 11:00:28.698 16743 16750 I main.machine.v: Explicit concurrent copying GC freed 8398(481KB) AllocSpace objects, 1(956KB) LOS objects, 58% free, 4438KB/10MB, paused 42us,30us total 22.338ms
 # [...]
+
+
+
+cargo tauri android build --help
+
+# Build your app in release mode for Android and generate APKs and AABs. It makes use of the `build.frontendDist` property from your `tauri.conf.json` file. It also runs your `build.beforeBui
+# 
+# Usage: cargo tauri android build [OPTIONS]
+# 
+# Options:
+#   -d, --debug
+#           Builds with the debug flag
+# 
+#   -v, --verbose...
+#           Enables verbose logging
+# 
+#   -t, --target [<TARGETS>...]
+#           Which targets to build (all by default)
+# 
+#           [possible values: aarch64, armv7, i686, x86_64]
+# 
+#   -f, --features [<FEATURES>...]
+#           List of cargo features to activate
+# 
+#   -c, --config <CONFIG>
+#           JSON strings or path to JSON files to merge with the default configuration file
+# 
+#           Configurations are merged in the order they are provided, which means a particular value overwrites previous values when a config key-value pair conflicts.
+# 
+#           Note that a platform-specific file is looked up and merged with the default file by default (tauri.macos.conf.json, tauri.linux.conf.json, tauri.windows.conf.json, tauri.android.c
+# 
+#       --split-per-abi
+#           Whether to split the APKs and AABs per ABIs
+# 
+#       --apk
+#           Build APKs
+# 
+#       --aab
+#           Build AABs
+# 
+#   -o, --open
+#           Open Android Studio
+# 
+#       --ci
+#           Skip prompting for values
+# 
+#           [env: CI=]
+# 
+#   -h, --help
+#           Print help (see a summary with '-h')
+# 
+#   -V, --version
+#           Print version
+
+
+cargo tauri android build --debug --apk --target aarch64
+
+#      Running beforeBuildCommand `trunk build`
+# 2025-03-26T16:14:33.690616Z  INFO 🚀 Starting trunk 0.21.9
+# 2025-03-26T16:14:33.690991Z  INFO 📦 starting build
+#     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.11s
+# 2025-03-26T16:14:34.639308Z  INFO applying new distribution
+# 2025-03-26T16:14:34.640946Z  INFO ✅ success
+#    Compiling tauri v2.4.0
+#    Compiling tauri-macros v2.1.0
+#    Compiling tauri-plugin-opener v2.2.6
+#    Compiling machine-v1 v0.0.1 (/home/cavani/Workspace/programmable-matter-tauri/machine-v1/src-tauri)
+#     Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.84s
+#         Info symlinking lib "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" in jniLibs dir "/home/cavani/Workspace/prog
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libandroid.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libdl.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "liblog.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libm.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libc.so"
+#         Info symlink at "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/src-tauri/gen/android/app/src/main/jniLibs/arm64-v8a/libmachine_v1_lib.so" points to "/home/cavani/Works
+#         Info symlink at "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/src-tauri/gen/android/app/src/main/jniLibs/x86_64/libmachine_v1_lib.so" points to "/home/cavani/Workspac
+# <========-----> 63% EXECUTING [3s]
+#    Compiling machine-v1 v0.0.1 (/home/cavani/Workspace/programmable-matter-tauri/machine-v1/src-tauri)eClasspath'
+#     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.94s
+#         Info symlinking lib "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" in jniLibs dir "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/src-tauri/gen/android/app/src/main/jniLibs/arm64-v8a"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libandroid.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libdl.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "liblog.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libm.so"
+#         Info "/home/cavani/Workspace/programmable-matter-tauri/machine-v1/target/aarch64-linux-android/debug/libmachine_v1_lib.so" requires shared lib "libc.so"
+#     Finished 1 APK at:
+#         /home/cavani/Workspace/programmable-matter-tauri/machine-v1/src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-universal-debug.apk
+
+
+adb devices -l
+
+# List of devices attached
+# RQ8MA0WKXCL            device usb:1-2 product:d2sxx model:SM_N975F device:d2s transport_id:6
+
+
+adb -d install src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-universal-debug.apk
+
+# Performing Streamed Install
+# Success
 ```
