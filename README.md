@@ -6,13 +6,18 @@
 
 ## Prototyping
 
-- Ubuntu 24.10 x86_64.
+- Ubuntu 24.10 x86_64
 - Fish Shell 4.0.1
+- Samsung Galaxy Note 10 Plus, Android 12, API 31 (dev device, USB, 2019)
+
+<https://developer.android.com/studio/debug/dev-options>
+
 
 ```sh
 # https://tauri.app/guides/prerequisites/#linux
 
 sudo apt update
+
 sudo apt install -y \
 --no-install-recommends \
 libwebkit2gtk-4.1-dev \
@@ -44,6 +49,9 @@ java -version
 # OpenJDK 64-Bit Server VM (build 17.0.14+7-Ubuntu-124.10, mixed mode, sharing)
 
 
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+
+
 # https://developer.android.com/tools
 # https://developer.android.com/studio#command-line-tools-only
 # https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
@@ -62,13 +70,8 @@ sha256sum -c checksum
 # ls -alH commandlinetools-linux-11076708_latest.zip
 # -rw-rw-r-- 1 cavani cavani 153607504 Mar 25 09:19 commandlinetools-linux-11076708_latest.zip
 
-
-export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
-export ANDROID_HOME="$HOME/Android/Sdk"
-mkdir -p $ANDROID_HOME
-
-
 unzip commandlinetools-linux-11076708_latest.zip
+
 
 cmdline-tools/bin/sdkmanager --help
 
@@ -133,6 +136,9 @@ cmdline-tools/bin/sdkmanager --help
 
 # Android 34 <- Tauri default
 
+export ANDROID_HOME="$HOME/Android/Sdk"
+mkdir -p $ANDROID_HOME
+
 cmdline-tools/bin/sdkmanager \
 --sdk_home $ANDROID_HOME \
 --install \
@@ -146,7 +152,12 @@ emulator \
 
 
 export NDK_HOME="$ANDROID_HOME/ndk/29.0.13113456"
+# export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin"
 fish_add_path --path $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools $ANDROID_HOME/cmdline-tools/latest/bin
+
+
+# Onwards use cmdline-tools installed in Android Sdk Home
+rm -rf cmdline-tools commandlinetools-linux-11076708_latest.zip checksum
 
 
 # https://developer.android.com/studio/run/managing-avds
