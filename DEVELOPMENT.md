@@ -1,6 +1,6 @@
 # Development
 
-- Ubuntu 24.10 (oracular)
+- Ubuntu 24.10 (oracular) x86_64
 - [Rust Toolchain](https://rustup.rs/)
 - [Fish Shell](https://fishshell.com/)
 - [Helix Editor](https://helix-editor.com/)
@@ -16,22 +16,24 @@
 # https://launchpad.net/~fish-shell/+archive/ubuntu/release-4
 
 sudo add-apt-repository ppa:fish-shell/release-4
+
 sudo apt update
-sudo apt install fish
+
+sudo apt install -y fish
 
 chsh -s /usr/bin/fish
 
 
 # (on fish shell)
 
-# adding a path:
+# Adding a path
 
 fish_add_path $HOME/.local/bin/
 
-# removing a path:
+# Removing a path
 
-# echo $fish_user_paths | tr " " "\n" | nl
-# set -e -Ug fish_user_paths[<index>]
+echo $fish_user_paths | tr " " "\n" | nl
+set -e -Ug fish_user_paths[<index>]
 
 
 #
@@ -47,16 +49,35 @@ sudo apt install -y --no-install-recommends libssl-dev
 
 # https://github.com/cargo-bins/cargo-binstall
 
-# (from source)
-# cargo install cargo-binstall
-
-# (from github binary)
+# Install from GitHub binary (recommended)
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
+# Alternative: install from source
+cargo install cargo-binstall
 
-cargo binstall cargo-edit cargo-update
+
+cargo binstall -y cargo-edit cargo-update
+
+
+# Update rustup
+
+rustup self update
+
+# Update toolchains
+
+rustup update
+
+# Update installed packages
 
 cargo install-update --all
+
+# Update project added dependency versions
+
+cargo upgrade -i
+
+# Update project lock dependency versions
+
+cargo update
 
 
 #
@@ -66,7 +87,8 @@ cargo install-update --all
 # https://docs.helix-editor.com/package-managers.html#snap
 # https://snapcraft.io/helix
 
-snap install --classic helix
+sudo snap install --classic helix
+
 
 hx --help
 
@@ -98,8 +120,10 @@ hx --help
 #     +N                             Open the first given file at line number N
 
 
+# Debug
 sudo apt install -y lldb-19
 sudo update-alternatives --install /usr/bin/lldb-dap lldb-dap /usr/bin/lldb-dap-19 1000
+
 
 hx --health rust
 
@@ -120,7 +144,7 @@ hx --health rust
 
 # https://zellij.dev/documentation/installation#rust---cargo
 
-cargo binstall zellij
+cargo binstall -y zellij
 
 
 zellij --help
@@ -199,6 +223,7 @@ zellij attach $(basename $PWD)
 # https://snapcraft.io/ghostty
 
 sudo snap install ghostty --classic
+
 
 # SSH
 # https://ghostty.org/docs/help/terminfo#copy-ghostty's-terminfo-to-a-remote-machine

@@ -1,14 +1,52 @@
-# Programmable Matter - Tauri Experimental Project
+# The Book of Dev - Tauri Experimental Project
 
-- Android app
-- Leptos UI
+- Android App
+- Web UI (Leptos, Tailwind CSS, daisyUI)
 - Camera and microphone permission
 
-## Prototyping
+## Overview
 
-- Ubuntu 24.10 x86_64
-- Fish Shell 4.0.1
-- Samsung Galaxy Note 10 Plus, Android 12, API 31 (dev device, USB, 2019)
+**Tauri**
+
+_Tauri is a framework for building tiny, fast binaries for all major desktop and mobile platforms._
+
+<https://tauri.app/>
+
+**Leptos**
+
+_Leptos makes it easy to build applications in the most-loved programming language, combining the best paradigms of modern web development with the power of Rust._
+
+<https://leptos.dev/>
+
+**Trunk**
+
+_Trunk is a WASM web application bundler for Rust. Trunk uses a simple, optional-config pattern for building & bundling WASM, JS snippets & other assets (images, css, scss) via a source HTML file._
+
+<https://trunkrs.dev/>
+
+**Tailwind CSS**
+
+_Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML._
+
+<https://tailwindcss.com/>
+
+**daisyUI**
+
+_daisyUI adds component class names to Tailwind CSS so you can make beautiful websites faster than ever._
+
+<https://daisyui.com/>
+
+## Preparation
+
+Ubuntu 24.10 (oracular) x86_64
+
+[DEVELOPMENT](./DEVELOPMENT.md)
+
+## 1. Android App Project
+
+Device:
+
+Samsung Galaxy Note 10 Plus, Android 12, API 31, USB, 2019.
 
 <https://developer.android.com/studio/debug/dev-options>
 
@@ -1204,4 +1242,11 @@ adb -d install src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-u
 
 # Performing Streamed Install
 # Success
+```
+
+## Leptos Web UI
+
+```sh
+
+
 ```
